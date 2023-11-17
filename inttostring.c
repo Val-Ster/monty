@@ -15,29 +15,29 @@ void fill_numbase_buff(unsigned int num, unsigned int base, char *buff, int buff
  */
 char *get_int(int num)
 {
-    unsigned int tempo;
-    int ourLength = 0;
-    long firstNum = 0;
-    char *rett;
+	unsigned int tempo;
+	int ourLength = 0;
+	long firstNum = 0;
+	char *rett;
 
 
-    tempo = _abs(num);
-    ourLength = get_numbase_len(tempo, 10);
+	tempo = _abs(num);
+	ourLength = get_numbase_len(tempo, 10);
 
 
-    if (num < 0 || firstNum < 0)
-        ourLength++; /* negative sign */
-    rett = malloc(ourLength + 1); /* create new string */
-    if (!rett)
-        return (NULL);
+	if (num < 0 || firstNum < 0)
+		ourLength++; /* negative sign */
+	rett = malloc(ourLength + 1); /* create new string */
+	if (!rett)
+		return (NULL);
 
 
-    fill_numbase_buff(tempo, 10, rett, ourLength);
-    if (num < 0 || firstNum < 0)
-        rett[0] = '-';
+	fill_numbase_buff(tempo, 10, rett, ourLength);
+	if (num < 0 || firstNum < 0)
+		rett[0] = '-';
 
 
-    return (rett);
+	return (rett);
 }
 
 
@@ -49,9 +49,9 @@ char *get_int(int num)
  */
 unsigned int _abs(int i)
 {
-    if (i < 0)
-        return (-(unsigned int)i);
-    return ((unsigned int)i);
+	if (i < 0)
+		return (-(unsigned int)i);
+	return ((unsigned int)i);
 }
 
 
@@ -64,15 +64,15 @@ unsigned int _abs(int i)
  */
 int get_numbase_len(unsigned int num, unsigned int base)
 {
-    int lenn = 1; /* all numbers contain atleast one digit */
+	int lenn = 1; /* all numbers contain atleast one digit */
 
 
-    while (num > base - 1)
-    {
-        lenn++;
-        num /= base;
-    }
-    return (lenn);
+	while (num > base - 1)
+	{
+		lenn++;
+		num /= base;
+	}
+	return (lenn);
 }
 
 
@@ -86,22 +86,22 @@ int get_numbase_len(unsigned int num, unsigned int base)
  * Return: always void.
  */
 void fill_numbase_buff(unsigned int num, unsigned int base,
-            char *buff, int buff_size)
+		char *buff, int buff_size)
 {
-    int remm, i = buff_size - 1;
+	int remm, i = buff_size - 1;
 
 
-    buff[buff_size] = '\0';
-    while (i >= 0)
-    {
-        remm = num % base;
-        if (remm > 9) /* return lowercase ascii val representation */
-            buff[i] = remm + 87; /* 10 will be a, 11 = b, ... */
-        else
-            buff[i] = remm + '0';
-        num /= base;
-        i--;
-    }
+	buff[buff_size] = '\0';
+	while (i >= 0)
+	{
+		remm = num % base;
+		if (remm > 9) /* return lowercase ascii val representation */
+			buff[i] = remm + 87; /* 10 will be a, 11 = b, ... */
+		else
+			buff[i] = remm + '0';
+		num /= base;
+		i--;
+	}
 }
 
 

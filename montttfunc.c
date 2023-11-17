@@ -17,14 +17,14 @@ void montyModFunc(stack_t **stack, unsigned int line_number);
  *              from the top and the top value  is removed.
  */
 void montyAddFunc(stack_t **stack, unsigned int line_number) {
-    switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
-        case 1:
-            setOpTokError(errorShortStack(line_number, "add"));
-            return;
-    }
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+		case 1:
+			setOpTokError(errorShortStack(line_number, "add"));
+			return;
+	}
 
-    (*stack)->next->next->n += (*stack)->next->n;
-    montyPopFunc(stack, line_number);
+	(*stack)->next->next->n += (*stack)->next->n;
+	montyPopFunc(stack, line_number);
 }
 
 
@@ -37,15 +37,15 @@ void montyAddFunc(stack_t **stack, unsigned int line_number) {
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
- void montySubFunc(stack_t **stack, unsigned int line_number) {
-    switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
-        case 1:
-            setOpTokError(errorShortStack(line_number, "sub"));
-            return;
-    }
+void montySubFunc(stack_t **stack, unsigned int line_number) {
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+		case 1:
+			setOpTokError(errorShortStack(line_number, "sub"));
+			return;
+	}
 
-    (*stack)->next->next->n -= (*stack)->next->n;
-    montyPopFunc(stack, line_number);
+	(*stack)->next->next->n -= (*stack)->next->n;
+	montyPopFunc(stack, line_number);
 }
 
 
@@ -59,14 +59,14 @@ void montyAddFunc(stack_t **stack, unsigned int line_number) {
  *              from the top and the top value is removed.
  */
 void montyMulFunc(stack_t **stack, unsigned int line_number) {
-    switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
-        case 1:
-            setOpTokError(errorShortStack(line_number, "mul"));
-            return;
-    }
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+		case 1:
+			setOpTokError(errorShortStack(line_number, "mul"));
+			return;
+	}
 
-    (*stack)->next->next->n *= (*stack)->next->n;
-    montyPopFunc(stack, line_number);
+	(*stack)->next->next->n *= (*stack)->next->n;
+	montyPopFunc(stack, line_number);
 }
 
 
@@ -79,21 +79,21 @@ void montyMulFunc(stack_t **stack, unsigned int line_number) {
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
- void montyModFunc(stack_t **stack, unsigned int line_number) {
-    switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
-        case 1:
-            setOpTokError(errorShortStack(line_number, "mod"));
-            return;
-    }
+void montyModFunc(stack_t **stack, unsigned int line_number) {
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+		case 1:
+			setOpTokError(errorShortStack(line_number, "mod"));
+			return;
+	}
 
-    switch ((*stack)->next->n == 0) {
-        case 1:
-            setOpTokError(divError(line_number));
-            return;
-    }
+	switch ((*stack)->next->n == 0) {
+		case 1:
+			setOpTokError(divError(line_number));
+			return;
+	}
 
-    (*stack)->next->next->n %= (*stack)->next->n;
-    montyPopFunc(stack, line_number);
+	(*stack)->next->next->n %= (*stack)->next->n;
+	montyPopFunc(stack, line_number);
 }
 
 
@@ -106,20 +106,20 @@ void montyMulFunc(stack_t **stack, unsigned int line_number) {
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
- void montyDivFunc(stack_t **stack, unsigned int line_number) {
-    switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
-        case 1:
-            setOpTokError(errorShortStack(line_number, "div"));
-            return;
-    }
+void montyDivFunc(stack_t **stack, unsigned int line_number) {
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+		case 1:
+			setOpTokError(errorShortStack(line_number, "div"));
+			return;
+	}
 
-    switch ((*stack)->next->n == 0) {
-        case 1:
-            setOpTokError(divError(line_number));
-            return;
-    }
+	switch ((*stack)->next->n == 0) {
+		case 1:
+			setOpTokError(divError(line_number));
+			return;
+	}
 
-    (*stack)->next->next->n /= (*stack)->next->n;
-    montyPopFunc(stack, line_number);
+	(*stack)->next->next->n /= (*stack)->next->n;
+	montyPopFunc(stack, line_number);
 }
 

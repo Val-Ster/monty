@@ -16,15 +16,15 @@ int checkOurMode(stack_t *stack);
  */
 void freeeStack(stack_t **stack)
 {
-    stack_t *tmmp = *stack;
+	stack_t *tmmp = *stack;
 
 
-    while (*stack)
-    {
-        tmmp = (*stack)->next;
-        free(*stack);
-        *stack = tmmp;
-    }
+	while (*stack)
+	{
+		tmmp = (*stack)->next;
+		free(*stack);
+		*stack = tmmp;
+	}
 }
 
 
@@ -38,23 +38,23 @@ void freeeStack(stack_t **stack)
  */
 int initStackk(stack_t **stack)
 {
-    stack_t *ss;
+	stack_t *ss;
 
 
-    ss = malloc(sizeof(stack_t));
-    if (ss == NULL)
-        return (mallocError());
+	ss = malloc(sizeof(stack_t));
+	if (ss == NULL)
+		return (mallocError());
 
 
-    ss->n = STACK;
-    ss->prev = NULL;
-    ss->next = NULL;
+	ss->n = STACK;
+	ss->prev = NULL;
+	ss->next = NULL;
 
 
-    *stack = ss;
+	*stack = ss;
 
 
-    return (EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
 
 
@@ -69,11 +69,11 @@ int initStackk(stack_t **stack)
  */
 int checkOurMode(stack_t *stack)
 {
-    if (stack->n == STACK)
-        return (STACK);
-    else if (stack->n == QUEUE)
-        return (QUEUE);
-    return (2);
+	if (stack->n == STACK)
+		return (STACK);
+	else if (stack->n == QUEUE)
+		return (QUEUE);
+	return (2);
 }
 
 
