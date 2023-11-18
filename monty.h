@@ -1,5 +1,3 @@
-Monty.h
-
 #ifndef __MONTY_H__
 #define __MONTY_H__
 
@@ -99,5 +97,3 @@ int pcharError(unsigned int line_number, char *message);
 
 
 #endif /* __MONTY_H__ */
-
-

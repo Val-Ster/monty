@@ -16,8 +16,10 @@ void montyModFunc(stack_t **stack, unsigned int line_number);
  * Description: The result is stored in the second value node
  *              from the top and the top value  is removed.
  */
-void montyAddFunc(stack_t **stack, unsigned int line_number) {
-	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+void montyAddFunc(stack_t **stack, unsigned int line_number)
+{
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
 		case 1:
 			setOpTokError(errorShortStack(line_number, "add"));
 			return;
@@ -37,8 +39,10 @@ void montyAddFunc(stack_t **stack, unsigned int line_number) {
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
-void montySubFunc(stack_t **stack, unsigned int line_number) {
-	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+void montySubFunc(stack_t **stack, unsigned int line_number)
+{
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
 		case 1:
 			setOpTokError(errorShortStack(line_number, "sub"));
 			return;
@@ -58,8 +62,10 @@ void montySubFunc(stack_t **stack, unsigned int line_number) {
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
-void montyMulFunc(stack_t **stack, unsigned int line_number) {
-	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+void montyMulFunc(stack_t **stack, unsigned int line_number)
+{
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
 		case 1:
 			setOpTokError(errorShortStack(line_number, "mul"));
 			return;
@@ -79,14 +85,17 @@ void montyMulFunc(stack_t **stack, unsigned int line_number) {
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
-void montyModFunc(stack_t **stack, unsigned int line_number) {
-	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+void montyModFunc(stack_t **stack, unsigned int line_number)
+{
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
 		case 1:
 			setOpTokError(errorShortStack(line_number, "mod"));
 			return;
 	}
 
-	switch ((*stack)->next->n == 0) {
+	switch ((*stack)->next->n == 0)
+	{
 		case 1:
 			setOpTokError(divError(line_number));
 			return;
@@ -106,14 +115,17 @@ void montyModFunc(stack_t **stack, unsigned int line_number) {
  * Description: The result is stored in the second value node
  *              from the top and the top value is removed.
  */
-void montyDivFunc(stack_t **stack, unsigned int line_number) {
-	switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
+void montyDivFunc(stack_t **stack, unsigned int line_number)
+{
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
 		case 1:
 			setOpTokError(errorShortStack(line_number, "div"));
 			return;
 	}
 
-	switch ((*stack)->next->n == 0) {
+	switch ((*stack)->next->n == 0)
+	{
 		case 1:
 			setOpTokError(divError(line_number));
 			return;
@@ -122,4 +134,3 @@ void montyDivFunc(stack_t **stack, unsigned int line_number) {
 	(*stack)->next->next->n /= (*stack)->next->n;
 	montyPopFunc(stack, line_number);
 }
-

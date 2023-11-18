@@ -12,10 +12,12 @@ int runOurMonty(FILE *script_fd);
 /**
  * freeOurTokens - Frees the global opToks array of strings.
  */
-void freeOurTokens(void) {
+void freeOurTokens(void)
+{
 	size_t ii = 0;
 
-	switch (opToks == NULL) {
+	switch (opToks == NULL)
+	{
 		case 1:
 			return;
 	}
@@ -32,7 +34,8 @@ void freeOurTokens(void) {
  *
  * Return: Length of current opToks (as int).
  */
-unsigned int tokenArrLen(void) {
+unsigned int tokenArrLen(void)
+{
 	unsigned int toks_len = 0;
 
 	while (opToks[toks_len])
@@ -50,11 +53,14 @@ unsigned int tokenArrLen(void) {
  * Return: If the line only contains delimiters - 1.
  *         Otherwise - 0.
  */
-int is_empty_line(char *line, char *delims) {
+int is_empty_line(char *line, char *delims)
+{
 	int ii, jj;
 
-	for (ii = 0; line[ii]; ii++) {
-		for (jj = 0; delims[jj]; jj++) {
+	for (ii = 0; line[ii]; ii++)
+	{
+		for (jj = 0; delims[jj]; jj++)
+		{
 			if (line[ii] == delims[jj])
 				break;
 		}
@@ -72,13 +78,15 @@ int is_empty_line(char *line, char *delims) {
  *
  * Return: A pointer to the corresponding function.
  */
-void (*get_op_func(char *opcode))(stack_t**, unsigned int) {
+void (*get_op_func(char *opcode))(stack_t**, unsigned int)
+{
 	instruction_t op_funcs[] = {
-		// ... (Same code as before)
+		/*(Same code as before)*/
 	};
 	int ii;
 
-	for (ii = 0; op_funcs[ii].opcode; ii++) {
+	for (ii = 0; op_funcs[ii].opcode; ii++)
+	{
 		if (strcmp(opcode, op_funcs[ii].opcode) == 0)
 			return (op_funcs[ii].f);
 	}
@@ -94,34 +102,40 @@ void (*get_op_func(char *opcode))(stack_t**, unsigned int) {
  *
  * Return: EXIT_SUCCESS on success, respective error code on failure.
  */
-int runOurMonty(FILE *script_fd) {
+int runOurMonty(FILE *script_fd)
+{
 	stack_t *stack = NULL;
 	char *line = NULL;
 	size_t len = 0, exit_status = EXIT_SUCCESS;
 	unsigned int line_number = 0, prev_tok_len = 0;
 	void (*op_func)(stack_t**, unsigned int);
 
-	switch (initStackk(&stack) == EXIT_FAILURE) {
+	switch (initStackk(&stack) == EXIT_FAILURE)
+	{
 		case 1:
 			return (EXIT_FAILURE);
 	}
 
-	while (getline(&line, &len, script_fd) != -1) {
+	while (getline(&line, &len, script_fd) != -1)
+	{
 		line_number++;
 		opToks = strtow(line, DELIMS);
-		switch (opToks == NULL) {
+		switch (opToks == NULL)
+		{
 			case 1:
 				if (is_empty_line(line, DELIMS))
 					continue;
 				freeeStack(&stack);
 				return (mallocError());
 		}
-		if (opToks[0][0] == '#') { /* comment line */
+		if (opToks[0][0] == '#')
+		{
 			freeOurTokens();
 			continue;
 		}
 		op_func = get_op_func(opToks[0]);
-		switch (op_func == NULL) {
+		switch (op_func == NULL)
+		{
 			case 1:
 				freeeStack(&stack);
 				exit_status = unknownOpErrors(opToks[0], line_number);
@@ -130,7 +144,8 @@ int runOurMonty(FILE *script_fd) {
 		}
 		prev_tok_len = tokenArrLen();
 		op_func(&stack, line_number);
-		if (tokenArrLen() != prev_tok_len) {
+		if (tokenArrLen() != prev_tok_len)
+		{
 			if (opToks && opToks[prev_tok_len])
 				exit_status = atoi(opToks[prev_tok_len]);
 			else
@@ -142,7 +157,8 @@ int runOurMonty(FILE *script_fd) {
 	}
 	freeeStack(&stack);
 
-	if (line && *line == 0) {
+	if (line && *line == 0)
+	{
 		free(line);
 		return (mallocError());
 	}
@@ -150,7 +166,3 @@ int runOurMonty(FILE *script_fd) {
 	free(line);
 	return (exit_status);
 }
-
-
-
-

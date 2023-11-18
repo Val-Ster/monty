@@ -60,7 +60,8 @@ unsigned int _abs(int i)
  * @num: number to get ourLength needed for
  * @base: base of number representation used by buffer
  *
- * Return: integer containing ourLength of buffer needed (doesn't contain null bt)
+ * Return: integer containing ourLength of buffer needed
+ * (doesn't contain null bt)
  */
 int get_numbase_len(unsigned int num, unsigned int base)
 {

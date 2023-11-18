@@ -1,4 +1,3 @@
-
 #include "monty.h"
 
 
@@ -13,26 +12,28 @@ void montyQueueFunc(stack_t **stack, unsigned int line_number);
  * @stack: A pointer to the topp mode node of a stack_t linked list.
  * @line_number: The current working line number of a Monty bytecodes file.
  */
-void montyRotlFunc(stack_t **stack, unsigned int line_number) {
-    stack_t *topp, *bott;
+void montyRotlFunc(stack_t **stack, unsigned int line_number)
+{
+	stack_t *topp, *bott;
 
-    switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
-        case 1:
-            return;
-    }
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
+		case 1:
+			return;
+	}
 
-    topp = (*stack)->next;
-    bott = (*stack)->next;
-    while (bott->next != NULL)
-        bott = bott->next;
+	topp = (*stack)->next;
+	bott = (*stack)->next;
+	while (bott->next != NULL)
+		bott = bott->next;
 
-    topp->next->prev = *stack;
-    (*stack)->next = topp->next;
-    bott->next = topp;
-    topp->next = NULL;
-    topp->prev = bott;
+	topp->next->prev = *stack;
+	(*stack)->next = topp->next;
+	bott->next = topp;
+	topp->next = NULL;
+	topp->prev = bott;
 
-    (void)line_number;
+	(void)line_number;
 }
 
 
@@ -41,26 +42,28 @@ void montyRotlFunc(stack_t **stack, unsigned int line_number) {
  * @stack: A pointer to the topp mode node of a stack_t linked list.
  * @line_number: The current working line number of a Monty bytecodes file.
  */
- void montyRotrFunc(stack_t **stack, unsigned int line_number) {
-    stack_t *topp, *bott;
+void montyRotrFunc(stack_t **stack, unsigned int line_number)
+{
+	stack_t *topp, *bott;
 
-    switch ((*stack)->next == NULL || (*stack)->next->next == NULL) {
-        case 1:
-            return;
-    }
+	switch ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	{
+		case 1:
+			return;
+	}
 
-    topp = (*stack)->next;
-    bott = (*stack)->next;
-    while (bott->next != NULL)
-        bott = bott->next;
+	topp = (*stack)->next;
+	bott = (*stack)->next;
+	while (bott->next != NULL)
+		bott = bott->next;
 
-    bott->prev->next = NULL;
-    (*stack)->next = bott;
-    bott->prev = *stack;
-    bott->next = topp;
-    topp->prev = bott;
+	bott->prev->next = NULL;
+	(*stack)->next = bott;
+	bott->prev = *stack;
+	bott->next = topp;
+	topp->prev = bott;
 
-    (void)line_number;
+	(void)line_number;
 }
 
 
@@ -69,9 +72,10 @@ void montyRotlFunc(stack_t **stack, unsigned int line_number) {
  * @stack: A pointer to the topp mode node of a stack_t linked list.
  * @line_number: The current working line number of a Monty bytecodes file.
  */
-void montyStackFunc(stack_t **stack, unsigned int line_number) {
-    (*stack)->n = STACK;
-    (void)line_number;
+void montyStackFunc(stack_t **stack, unsigned int line_number)
+{
+	(*stack)->n = STACK;
+	(void)line_number;
 }
 
 
@@ -82,8 +86,6 @@ void montyStackFunc(stack_t **stack, unsigned int line_number) {
  */
 void montyQueueFunc(stack_t **stack, unsigned int line_number)
 {
-    (*stack)->n = QUEUE;
-    (void)line_number;
+	(*stack)->n = QUEUE;
+	(void)line_number;
 }
-
-
